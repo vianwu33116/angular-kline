@@ -138,6 +138,7 @@ export class DrilldownComponent implements OnInit, OnDestroy {
           console.log('Candlestick Data:', candlestickData);
           if (this.candlestickSeries) {
             this.candlestickSeries.setData(candlestickData);
+            this.chart?.timeScale().fitContent();
           }
         },
         error: (error) => {
