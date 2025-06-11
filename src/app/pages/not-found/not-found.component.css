@@ -8,10 +8,11 @@
     background: #f8f9fa;
     border: 2px solid #BCBCBC;
     border-radius: 8px;
+    padding: 48px 24px;
 }
 
 .not-found-txt{
     font-size: 2rem;
     color: #343a40;
-    margin: 48px 24px;
+    margin-bottom: 24px;
 }
