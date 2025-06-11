@@ -1,0 +1,9 @@
+<div class="main-container">
+  <div class="page-name">Drilldown Page --- {{ symbol }}</div>
+  <app-time-selector (selectedIntervalChanged)="onIntervalChanged($event)"></app-time-selector>
+  <div #chartContainer class="chart-container">
+    <!-- <app-chart [chartData]="chartData"></app-chart> -->
+  </div>
+</div>
+
+<!-- <app-time-selector (timeSelected)="onTimeSelected($event)"></app-time-selector> -->

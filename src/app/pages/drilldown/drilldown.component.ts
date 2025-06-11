@@ -1,0 +1,148 @@
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  OnInit,
+  OnDestroy,
+} from '@angular/core';
+import { Router } from '@angular/router';
+import { BinanceApiService } from 'src/app/services/binance-api.service';
+import { klineData } from 'src/app/models/currency.model';
+import {
+  createChart,
+  IChartApi,
+  ISeriesApi,
+  CandlestickData,
+  UTCTimestamp,
+} from 'lightweight-charts';
+
+@Component({
+  selector: 'app-drilldown',
+  templateUrl: './drilldown.component.html',
+  styleUrls: ['../../app.component.css', './drilldown.component.css'],
+})
+export class DrilldownComponent implements OnInit, OnDestroy {
+  symbol: string = '';
+  interval: string = '4h';
+  limitAmount: number = 100;
+  klineData: klineData[] = [];
+  private chart: IChartApi | null = null;
+  private candlestickSeries: ISeriesApi<'Candlestick'> | null = null;
+
+  @ViewChild('chartContainer', { static: true }) chartContainer!: ElementRef;
+
+  constructor(
+    private router: Router,
+    private binanceApiService: BinanceApiService
+  ) {}
+
+  ngOnInit(): void {
+    this.symbol = this.router.url.split('/').pop() || '';
+    this.initChart();
+    this.fetchKlineData();
+  }
+
+  ngOnDestroy() {
+    if (this.chart) {
+      this.chart.remove();
+    }
+  }
+
+  onIntervalChanged(interval: string): void {
+    console.log(interval);
+    this.interval = interval;
+    this.fetchKlineData();
+  }
+
+  // ResizeObserver 用於監控圖表容器大小變化
+  private setResizeObserver() {
+    if (typeof ResizeObserver !== 'undefined') {
+      const resizeObserver = new ResizeObserver(() => {
+        if (this.chart) {
+          this.chart.applyOptions({
+            width: this.chartContainer.nativeElement.clientWidth,
+            height: this.chartContainer.nativeElement.clientHeight,
+          });
+          this.chart?.timeScale().fitContent(); // 確保在調整大小後自動縮放
+        }
+      });
+      resizeObserver.observe(this.chartContainer.nativeElement);
+    }
+  }
+
+  private initChart() {
+    // create lightweight-charts chart
+    this.chart = createChart(this.chartContainer.nativeElement, {
+      width: this.chartContainer.nativeElement.clientWidth,
+      height: this.chartContainer.nativeElement.clientHeight,
+      layout: {
+        background: { color: '#ffffff' },
+        textColor: '#000000',
+        attributionLogo: false, // hide TradingView logo
+      },
+      grid: {
+        vertLines: { color: '#E1E4E6' },
+        horzLines: { color: '#E1E4E6' },
+      },
+      crosshair: {
+        mode: 1, // 1: CrosshairMode.Magnet	usually used for candlestick charts
+      },
+      rightPriceScale: {
+        borderColor: '#485c7b',
+      },
+      timeScale: {
+        borderColor: '#485c7b',
+        timeVisible: true,
+        secondsVisible: false,
+      },
+    });
+
+    this.candlestickSeries = this.chart.addCandlestickSeries({
+      upColor: '#42A39A',
+      downColor: '#E56152',
+      borderUpColor: '#42A39A',
+      borderDownColor: '#E56152',
+      wickUpColor: '#42A39A',
+      wickDownColor: '#E56152',
+      priceFormat: {
+        type: 'price',
+        precision: 6,
+        minMove: 0.000001,
+      },
+    });
+
+    // this.chart.timeScale().applyOptions({
+    //   rightOffset: 0, // 確保圖表顯示到最新的數據
+    //   barSpacing: 10, // 調整柱狀圖間距
+    //   fixLeftEdge: true, // 固定左邊緣
+    //   lockVisibleTimeRangeOnResize: true, // 在調整大小時鎖定可見時間範圍
+    //   visible: true, // 確保時間軸可見
+    //   secondsVisible: false, // 不顯示秒級別的時間
+    // });
+    this.setResizeObserver();
+  }
+
+  private fetchKlineData() {
+    this.binanceApiService
+      .getKline(this.symbol, this.interval, this.limitAmount)
+      .subscribe({
+        next: (data) => {
+          this.klineData = data;
+          const candlestickData: CandlestickData[] = this.klineData.map((item) => ({
+            time: Math.floor(item.time / 1000) as UTCTimestamp, // Ensure time is in UTC format
+            open: item.open,
+            high: item.high,
+            low: item.low,
+            close: item.close,
+          }));
+          console.log('Candlestick Data:', candlestickData);
+          if (this.candlestickSeries) {
+            this.candlestickSeries.setData(candlestickData);
+          }
+        },
+        error: (error) => {
+          console.error('Error fetching kline data:', error);
+        },
+      });
+    }
+}

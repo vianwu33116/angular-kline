@@ -1,0 +1,11 @@
+<div class="currency-card">
+  <h2>{{ currency.symbol }}</h2>
+  <div class="symbol-price" 
+      [ngClass]="currency.priceChangePercent == 0 ? 'zero' : (currency.priceChangePercent < 0) ? 'negative' : 'positive'">
+      {{ currency.price }}
+  </div>
+  <!-- <p>Last Updated: {{ currency.lastUpdated | date:'short' }}</p> -->
+</div>
+<!-- <div class="currency-card" *ngIf="!currency">
+  <p>Loading...</p>
+</div> -->

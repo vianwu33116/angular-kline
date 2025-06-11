@@ -1,18 +1,36 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CurrencyCardComponent } from './components/currency-card/currency-card.component';
+import { MainComponent } from './pages/main/main.component';
+import { DrilldownComponent } from './pages/drilldown/drilldown.component';
+import { HeaderComponent } from './components/header/header.component';
+import { TimeSelectorComponent } from './components/time-selector/time-selector.component';
+import { BinanceApiService } from './services/binance-api.service';
+import { HttpClientModule } from '@angular/common/http';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CurrencyCardComponent,
+    MainComponent,
+    DrilldownComponent,
+    HeaderComponent,
+    TimeSelectorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [BinanceApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
