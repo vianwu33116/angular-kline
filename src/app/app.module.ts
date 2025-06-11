@@ -7,6 +7,7 @@ import { MainComponent } from './pages/main/main.component';
 import { DrilldownComponent } from './pages/drilldown/drilldown.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TimeSelectorComponent } from './components/time-selector/time-selector.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { BinanceApiService } from './services/binance-api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,7 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MainComponent,
     DrilldownComponent,
     HeaderComponent,
-    TimeSelectorComponent
+    TimeSelectorComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
