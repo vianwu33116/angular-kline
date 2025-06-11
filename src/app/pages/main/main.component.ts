@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BinanceApiService } from 'src/app/services/binance-api.service';
-import { Observable } from 'rxjs';
 import { Currency } from 'src/app/models/currency.model';
 
 @Component({
