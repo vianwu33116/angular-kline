@@ -49,7 +49,6 @@ export class DrilldownComponent implements OnInit, OnDestroy {
   }
 
   onIntervalChanged(interval: string): void {
-    console.log(interval);
     this.interval = interval;
     this.fetchKlineData();
   }
@@ -110,15 +109,6 @@ export class DrilldownComponent implements OnInit, OnDestroy {
         minMove: 0.000001,
       },
     });
-
-    // this.chart.timeScale().applyOptions({
-    //   rightOffset: 0, // 確保圖表顯示到最新的數據
-    //   barSpacing: 10, // 調整柱狀圖間距
-    //   fixLeftEdge: true, // 固定左邊緣
-    //   lockVisibleTimeRangeOnResize: true, // 在調整大小時鎖定可見時間範圍
-    //   visible: true, // 確保時間軸可見
-    //   secondsVisible: false, // 不顯示秒級別的時間
-    // });
     this.setResizeObserver();
   }
 
@@ -135,7 +125,6 @@ export class DrilldownComponent implements OnInit, OnDestroy {
             low: item.low,
             close: item.close,
           }));
-          console.log('Candlestick Data:', candlestickData);
           if (this.candlestickSeries) {
             this.candlestickSeries.setData(candlestickData);
             this.chart?.timeScale().fitContent();

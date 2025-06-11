@@ -15,6 +15,5 @@ export class TimeSelectorComponent {
   setSelectedInterval(interval: string): void {
     this.selectedInterval = interval;
     this.selectedIntervalChanged.emit(this.selectedInterval);
-    // 在這裡可以觸發其他操作，例如通知父組件或服務
   }
 }

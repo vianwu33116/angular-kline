@@ -13,10 +13,6 @@ export class BinanceApiService {
 
     constructor(private http: HttpClient) {}
 
-    /**
-     * Fetches the latest ticker data from Binance API.
-     * @returns An Observable containing an array of ticker data.
-     */
     getTicker(): Observable<Currency[]> {
         // Fetching the 24hr ticker data from Binance API
         const url = `${this.baseUrl}/ticker/24hr`;
@@ -28,6 +24,7 @@ export class BinanceApiService {
             }))) 
         );
     }
+    
     getKline(symbol: string, interval: string = '1d', limit: number = 100): Observable<klineData[]> {
         // Fetching Kline data for a specific symbol from Binance API
         const url = `${this.baseUrl}/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`;

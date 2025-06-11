@@ -17,7 +17,6 @@ export class MainComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // console.log(this.currencies$);
     this.binanceApiService.getTicker().subscribe({
       next: (data) => {
         this.currencies = data;
