@@ -3,7 +3,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-time-selector',
   templateUrl: './time-selector.component.html',
-  styleUrls: ['../../app.component.css', './time-selector.component.css']
+  styleUrls: ['./time-selector.component.css']
 })
 
 export class TimeSelectorComponent {
