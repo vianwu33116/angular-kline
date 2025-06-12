@@ -1,4 +1,76 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+h1 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 16px 0;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+h1:hover {
+  color: gray;
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+div,
+p {
+  margin: 0;
+  padding: 0;
+}
+.header {
+  background-color: #eeeeee;
+  margin-bottom: 32px;
+}
+.main-container {
+  width: viewport-width;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-container {
+    max-width: 1280px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px;
+}
+.chart-container {
+    max-width: 100%;
+    width: 80%;
+    aspect-ratio: 22 / 8; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.page-name {
+  margin-bottom: 24px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+/* .negative, .positive, .normal are color style for showing the price status*/
+.negative {
+  color: #f00000;
+}
+
+.positive {
+  color: #48c786;
+}
+
+.normal {
+  color: #000000;
+}
