@@ -1,7 +1,7 @@
 export interface Currency {
   symbol: string;
   priceChangePercent: string;
-  price: string; // Average price
+  price: string; // Latest price
 }
 
 export interface klineData {
