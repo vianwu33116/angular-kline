@@ -132,6 +132,10 @@ export class DrilldownComponent implements OnInit, OnDestroy {
         },
         error: (error) => {
           console.error('Error fetching kline data:', error);
+          if(error.status === 400 || error.name === 'HttpErrorResponse') {
+            alert('Symbol not found. Please check the symbol and try again.');
+            this.router.navigate(['']);
+          }
         },
       });
     }
