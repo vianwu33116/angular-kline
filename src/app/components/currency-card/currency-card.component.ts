@@ -8,8 +8,12 @@ import { Currency } from 'src/app/models/currency.model';
 })
 export class CurrencyCardComponent {
   @Input() currency: Currency = {
-    symbol: '',
-    priceChangePercent: 0,
-    price: 0,
+    symbol: 'symbol',
+    priceChangePercent: '0',
+    price: '0',
   };
+
+  parseFloat(priceChangePercent: string): number {
+    return parseFloat(priceChangePercent);
+  }
 }
