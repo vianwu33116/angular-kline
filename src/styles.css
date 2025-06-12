@@ -32,7 +32,7 @@ p {
   margin-bottom: 32px;
 }
 .main-container {
-  width: viewport-width;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,6 +77,12 @@ p {
 }
 .pointer {
   cursor: pointer;
+}
+
+/* change angular material mat-select style  */
+.mat-mdc-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-mdc-text-field-wrapper {
+    width: 100px;
+    background: #ffffff;
 }
 
 /* .negative, .positive, .normal are color style for showing the price status*/
