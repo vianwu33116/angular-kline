@@ -1,7 +1,7 @@
 <div class="currency-card">
   <h2>{{ currency.symbol }}</h2>
   <div class="symbol-price" 
-      [ngClass]="currency.priceChangePercent == 0 ? 'zero' : (currency.priceChangePercent < 0) ? 'negative' : 'positive'">
+      [ngClass]="currency.priceChangePercent == 0 ? 'normal' : (currency.priceChangePercent < 0) ? 'negative' : 'positive'">
       {{ currency.price }}
   </div>
 </div>
