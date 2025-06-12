@@ -53,7 +53,7 @@ export class DrilldownComponent implements OnInit, OnDestroy {
     this.fetchKlineData();
   }
 
-  // ResizeObserver 用於監控圖表容器大小變化
+  // ResizeObserver: aim to monitor size change of the container
   private setResizeObserver() {
     if (typeof ResizeObserver !== 'undefined') {
       const resizeObserver = new ResizeObserver(() => {
@@ -62,7 +62,7 @@ export class DrilldownComponent implements OnInit, OnDestroy {
             width: this.chartContainer.nativeElement.clientWidth,
             height: this.chartContainer.nativeElement.clientHeight,
           });
-          this.chart?.timeScale().fitContent(); // 確保在調整大小後自動縮放
+          this.chart?.timeScale().fitContent(); // Ensure automatic scaling after resizing
         }
       });
       resizeObserver.observe(this.chartContainer.nativeElement);
@@ -70,7 +70,7 @@ export class DrilldownComponent implements OnInit, OnDestroy {
   }
 
   private initChart() {
-    // create lightweight-charts chart
+    // create lightweight-charts chart and basic style setup
     this.chart = createChart(this.chartContainer.nativeElement, {
       width: this.chartContainer.nativeElement.clientWidth,
       height: this.chartContainer.nativeElement.clientHeight,
@@ -112,6 +112,7 @@ export class DrilldownComponent implements OnInit, OnDestroy {
     this.setResizeObserver();
   }
 
+  // Get kline data and set to the chart
   private fetchKlineData() {
     this.binanceApiService
       .getKline(this.symbol, this.interval, this.limitAmount)
