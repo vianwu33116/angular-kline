@@ -17,7 +17,7 @@ export class BinanceApiService {
     getTicker(): Observable<Currency[]> {
         const url = `${this.baseUrl}/ticker/24hr`;
         return this.http.get<BinanceTickerData[]>(url).pipe(
-            map(res => res.slice(0, 20).map(item => ({ // Limit to first 20 results
+            map(res => res.slice(0, 24).map(item => ({ // Limit to first 24 results
                 symbol : item.symbol,
                 priceChangePercent: item.priceChange,
                 price: item.lastPrice
