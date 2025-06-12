@@ -19,7 +19,7 @@ import {
 @Component({
   selector: 'app-drilldown',
   templateUrl: './drilldown.component.html',
-  styleUrls: ['./drilldown.component.css'],
+  styleUrls: [],
 })
 export class DrilldownComponent implements OnInit, OnDestroy {
   symbol: string = '';

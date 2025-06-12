@@ -1,8 +1,0 @@
-.chart-container {
-    max-width: 100%;
-    width: 80%;
-    aspect-ratio: 22 / 8; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}

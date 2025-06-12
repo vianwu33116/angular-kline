@@ -6,7 +6,7 @@ import { Currency } from 'src/app/models/currency.model';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: []
 })
 export class MainComponent implements OnInit {
   currencies: Currency[] = [];
