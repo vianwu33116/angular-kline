@@ -9,9 +9,9 @@ import { Currency, klineData, BinanceTickerData, BinanceKlineData } from "../mod
 })
 
 export class BinanceApiService {
-    private baseUrl: string = 'https://api.binance.com/api/v3';
+    private readonly baseUrl: string = 'https://api.binance.com/api/v3';
 
-    constructor(private http: HttpClient) {}
+    constructor(private readonly http: HttpClient) {}
 
     // Fetching the 24hr ticker data from Binance API
     getTicker(): Observable<Currency[]> {

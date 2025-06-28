@@ -32,8 +32,8 @@ export class DrilldownComponent implements OnInit, OnDestroy {
   @ViewChild('chartContainer', { static: true }) chartContainer!: ElementRef;
 
   constructor(
-    private router: Router,
-    private binanceApiService: BinanceApiService
+    private readonly router: Router,
+    private readonly binanceApiService: BinanceApiService
   ) {}
 
   ngOnInit(): void {

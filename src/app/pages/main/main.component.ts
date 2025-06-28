@@ -11,8 +11,8 @@ import { Currency } from 'src/app/models/currency.model';
 export class MainComponent implements OnInit {
   currencies: Currency[] = [];
   constructor(
-    private router: Router,
-    private binanceApiService: BinanceApiService
+    private readonly router: Router,
+    private readonly binanceApiService: BinanceApiService
   ) {}
 
   ngOnInit(): void {

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: []
 })
 export class HeaderComponent {
-  constructor(private router: Router) {}
+  constructor(private readonly router: Router) {}
 
   navigateToMain(): void {
     this.router.navigate(['/']);
