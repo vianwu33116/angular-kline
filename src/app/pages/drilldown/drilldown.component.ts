@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { BinanceApiService } from 'src/app/services/binance-api.service';
-import { klineData } from 'src/app/models/currency.model';
+import { KlineData } from 'src/app/models/currency.model';
 import {
   createChart,
   IChartApi,
@@ -25,7 +25,7 @@ export class DrilldownComponent implements OnInit, OnDestroy {
   symbol: string = '';
   interval: string = '4h';
   limitAmount: number = 100;
-  klineData: klineData[] = [];
+  klineData: KlineData[] = [];
   private chart: IChartApi | null = null;
   private candlestickSeries: ISeriesApi<'Candlestick'> | null = null;
 

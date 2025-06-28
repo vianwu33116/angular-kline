@@ -4,7 +4,7 @@ export interface Currency {
   price: string; // Latest price
 }
 
-export interface klineData {
+export interface KlineData {
   time: number;   // Open time
   open: number;   // Open price
   high: number;   // High price
