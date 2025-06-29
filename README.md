@@ -6,6 +6,11 @@ The application features two pages: a main page for viewing the latest prices of
 * The cryptocurrency data is fetched from the [Binance Spot API](https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md).
 * The candlestick chart is rendered using the [lightweight-charts](https://github.com/tradingview/lightweight-charts) library.
 
+
+---
+
+Before you start, please ensure that your Node.js version is compatible with the Angular version used in this project.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. 
