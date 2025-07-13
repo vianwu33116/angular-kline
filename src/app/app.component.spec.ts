@@ -7,14 +7,24 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HeaderComponent } from './components/header/header.component';
 
 describe('AppComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    declarations: [AppComponent, MainComponent, DrilldownComponent, NotFoundComponent, HeaderComponent],
-    imports: [RouterModule.forRoot([
-        { path: '', component: MainComponent },
-        { path: 'drilldown/:symbol', component: DrilldownComponent },
-        { path: '**', component: NotFoundComponent }
-    ])]
-  }));
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      declarations: [
+        AppComponent,
+        MainComponent,
+        DrilldownComponent,
+        NotFoundComponent,
+        HeaderComponent,
+      ],
+      imports: [
+        RouterModule.forRoot([
+          { path: '', component: MainComponent },
+          { path: 'drilldown/:symbol', component: DrilldownComponent },
+          { path: '**', component: NotFoundComponent },
+        ]),
+      ],
+    }),
+  );
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);

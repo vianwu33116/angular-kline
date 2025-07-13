@@ -2,6 +2,7 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
 h1 {
   text-align: center;
   font-size: 24px;
@@ -34,53 +35,54 @@ p {
   align-items: center;
 }
 .card-container {
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 1280px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    gap: 16px;
-    padding: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1280px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
 }
 .chart-container {
-    max-width: 100%;
-    width: 80%;
-    aspect-ratio: 22 / 8; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  max-width: 100%;
+  width: 80%;
+  aspect-ratio: 22 / 8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .page-name {
   margin-bottom: 24px;
 }
-.not-found-wrap{
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: #f8f9fa;
-    border: 2px solid #BCBCBC;
-    border-radius: 8px;
-    padding: 48px 24px;
+.not-found-wrap {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #f8f9fa;
+  border: 2px solid #bcbcbc;
+  border-radius: 8px;
+  padding: 48px 24px;
 }
 
-.not-found-txt{
-    font-size: 2rem;
-    color: #343a40;
-    margin-bottom: 24px;
+.not-found-txt {
+  font-size: 2rem;
+  color: #343a40;
+  margin-bottom: 24px;
 }
 .pointer {
   cursor: pointer;
 }
 
 /* change angular material mat-select style  */
-.mat-mdc-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-mdc-text-field-wrapper {
-    width: 100px;
-    background: #ffffff;
+.mat-mdc-form-field-type-mat-select:not(.mat-form-field-disabled)
+  .mat-mdc-text-field-wrapper {
+  width: 100px;
+  background: #ffffff;
 }
 
 /* .negative, .positive, .normal are color style for showing the price status*/

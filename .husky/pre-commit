@@ -1,1 +1,2 @@
+echo "trigger commit-msg"
 npx lint-staged
