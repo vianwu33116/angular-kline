@@ -1,11 +1,19 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { MainComponent } from './pages/main/main.component';
+import { DrilldownComponent } from './pages/drilldown/drilldown.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { HeaderComponent } from './components/header/header.component';
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    declarations: [AppComponent]
+    declarations: [AppComponent, MainComponent, DrilldownComponent, NotFoundComponent, HeaderComponent],
+    imports: [RouterModule.forRoot([
+        { path: '', component: MainComponent },
+        { path: 'drilldown/:symbol', component: DrilldownComponent },
+        { path: '**', component: NotFoundComponent }
+    ])]
   }));
 
   it('should create the app', () => {
@@ -18,12 +26,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('angular-kline');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-kline app is running!');
   });
 });

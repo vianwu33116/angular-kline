@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NotFoundComponent } from './not-found.component';
+import { MainComponent } from '../main/main.component';
+import { RouterModule } from '@angular/router';
 
 describe('NotFoundComponent', () => {
   let component: NotFoundComponent;
@@ -8,14 +9,19 @@ describe('NotFoundComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NotFoundComponent]
+      declarations: [NotFoundComponent, MainComponent],
+        imports: [RouterModule.forRoot([
+            { path: '', component: MainComponent },
+            { path: '**', component: NotFoundComponent }
+        ])]
     });
+    
     fixture = TestBed.createComponent(NotFoundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create NotFoundComponent', () => {
     expect(component).toBeTruthy();
   });
 });
