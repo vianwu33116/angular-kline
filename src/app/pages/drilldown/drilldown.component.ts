@@ -1,5 +1,6 @@
 import {
   Component,
+  inject,
   ViewChild,
   ElementRef,
   OnInit,
@@ -22,19 +23,17 @@ import {
   styleUrls: [],
 })
 export class DrilldownComponent implements OnInit, OnDestroy {
-  symbol: string = '';
-  interval: string = '4h';
-  limitAmount: number = 100;
+  symbol = '';
+  interval = '4h';
+  limitAmount = 100;
   klineData: KlineData[] = [];
   private chart: IChartApi | null = null;
   private candlestickSeries: ISeriesApi<'Candlestick'> | null = null;
 
   @ViewChild('chartContainer', { static: true }) chartContainer!: ElementRef;
-
-  constructor(
-    private readonly router: Router,
-    private readonly binanceApiService: BinanceApiService
-  ) {}
+  // Injecting Router and BinanceApiService
+  private readonly router = inject(Router);
+  private readonly binanceApiService = inject(BinanceApiService);
 
   ngOnInit(): void {
     this.symbol = this.router.url.split('/').pop() || '';
@@ -119,13 +118,15 @@ export class DrilldownComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (data) => {
           this.klineData = data;
-          const candlestickData: CandlestickData[] = this.klineData.map((item) => ({
-            time: Math.floor(item.time / 1000) as UTCTimestamp, // Ensure time is in UTC format
-            open: item.open,
-            high: item.high,
-            low: item.low,
-            close: item.close,
-          }));
+          const candlestickData: CandlestickData[] = this.klineData.map(
+            (item) => ({
+              time: Math.floor(item.time / 1000) as UTCTimestamp, // Ensure time is in UTC format
+              open: item.open,
+              high: item.high,
+              low: item.low,
+              close: item.close,
+            }),
+          );
           if (this.candlestickSeries) {
             this.candlestickSeries.setData(candlestickData);
             this.chart?.timeScale().fitContent();
@@ -133,11 +134,11 @@ export class DrilldownComponent implements OnInit, OnDestroy {
         },
         error: (error) => {
           console.error('Error fetching kline data:', error);
-          if(error.status === 400 || error.name === 'HttpErrorResponse') {
+          if (error.status === 400 || error.name === 'HttpErrorResponse') {
             alert('Symbol not found. Please check the symbol and try again.');
             this.router.navigate(['']);
           }
         },
       });
-    }
+  }
 }

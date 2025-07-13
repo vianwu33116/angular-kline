@@ -1,18 +1,18 @@
 .currency-card {
-    width: 240px;
-    border: 2px solid #BCBCBC;
-    border-radius: 8px;
-    padding: 12px;
-    cursor: pointer;
+  width: 240px;
+  border: 2px solid #bcbcbc;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
 }
 
 .currency-card:hover {
-    border: 2px solid #3f51b5;
+  border: 2px solid #3f51b5;
 }
 
 .symbol-price {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bolder;
-    margin-bottom: 6px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bolder;
+  margin-bottom: 6px;
 }

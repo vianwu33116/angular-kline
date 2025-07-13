@@ -18,9 +18,30 @@ describe('DrilldownComponent', () => {
 
   // Mock data for Kline
   const mockKlineData = [
-    { time: 1622505600000, open: 35000, high: 36000, low: 34000, close: 35500, volume: 1000 },
-    { time: 1622592000000, open: 35500, high: 37000, low: 35000, close: 36500, volume: 1200 },
-    { time: 1622678400000, open: 36500, high: 38000, low: 36000, close: 37500, volume: 1500 },
+    {
+      time: 1622505600000,
+      open: 35000,
+      high: 36000,
+      low: 34000,
+      close: 35500,
+      volume: 1000,
+    },
+    {
+      time: 1622592000000,
+      open: 35500,
+      high: 37000,
+      low: 35000,
+      close: 36500,
+      volume: 1200,
+    },
+    {
+      time: 1622678400000,
+      open: 36500,
+      high: 38000,
+      low: 36000,
+      close: 37500,
+      volume: 1500,
+    },
   ];
 
   beforeEach(() => {
@@ -34,8 +55,8 @@ describe('DrilldownComponent', () => {
       imports: [
         MatFormFieldModule,
         MatSelectModule,
-        NoopAnimationsModule // Use NoopAnimationsModule for testing without animations
-      ]
+        NoopAnimationsModule, // Use NoopAnimationsModule for testing without animations
+      ],
     });
 
     binanceApiService = TestBed.inject(BinanceApiService);
@@ -46,7 +67,7 @@ describe('DrilldownComponent', () => {
     fixture = TestBed.createComponent(DrilldownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });  
+  });
 
   it('should create DrilldownComponent', () => {
     expect(component).toBeTruthy();

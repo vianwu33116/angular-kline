@@ -5,14 +5,13 @@ export interface Currency {
 }
 
 export interface KlineData {
-  time: number;   // Open time
-  open: number;   // Open price
-  high: number;   // High price
-  low: number;    // Low price
-  close: number;  // Close price
+  time: number; // Open time
+  open: number; // Open price
+  high: number; // High price
+  low: number; // Low price
+  close: number; // Close price
   volume: number; // Volume of trades
 }
-
 
 // Binance API data format:
 export interface BinanceTickerData {
@@ -40,16 +39,16 @@ export interface BinanceTickerData {
 }
 
 export type BinanceKlineData = [
-  number,   // 0: Open time
-  string,   // 1: Open price
-  string,   // 2: High price
-  string,   // 3: Low price
-  string,   // 4: Close price
-  string,   // 5: Volume
-  number,   // 6: Close time
-  string,   // 7: Quote asset volume
-  number,   // 8: Number of trades
-  string,   // 9: Taker buy base asset volume
-  string,   // 10: Taker buy quote asset volume
-  string    // 11: Ignore
+  number, // 0: Open time
+  string, // 1: Open price
+  string, // 2: High price
+  string, // 3: Low price
+  string, // 4: Close price
+  string, // 5: Volume
+  number, // 6: Close time
+  string, // 7: Quote asset volume
+  number, // 8: Number of trades
+  string, // 9: Taker buy base asset volume
+  string, // 10: Taker buy quote asset volume
+  string, // 11: Ignore
 ];

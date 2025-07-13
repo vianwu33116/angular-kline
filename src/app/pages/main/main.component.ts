@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BinanceApiService } from 'src/app/services/binance-api.service';
 import { Currency } from 'src/app/models/currency.model';
@@ -6,14 +6,13 @@ import { Currency } from 'src/app/models/currency.model';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class MainComponent implements OnInit {
   currencies: Currency[] = [];
-  constructor(
-    private readonly router: Router,
-    private readonly binanceApiService: BinanceApiService
-  ) {}
+  // Injecting Router and BinanceApiService
+  private readonly router = inject(Router);
+  private readonly binanceApiService = inject(BinanceApiService);
 
   ngOnInit(): void {
     this.binanceApiService.getTicker().subscribe({
@@ -22,7 +21,7 @@ export class MainComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error fetching ticker data:', error);
-      }
+      },
     });
   }
   navigateToDrilldown(symbol: string): void {

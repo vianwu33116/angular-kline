@@ -1,8 +1,11 @@
 <mat-form-field>
   <mat-label>Interval</mat-label>
-  <mat-select [(value)]="selectedInterval" (selectionChange)="setSelectedInterval($event.value)">
+  <mat-select
+    [(value)]="selectedInterval"
+    (selectionChange)="setSelectedInterval($event.value)"
+  >
     <mat-option *ngFor="let timeOption of timeOptions" [value]="timeOption">
-        {{ timeOption }}
+      {{ timeOption }}
     </mat-option>
   </mat-select>
 </mat-form-field>

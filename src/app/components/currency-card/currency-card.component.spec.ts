@@ -9,7 +9,7 @@ describe('CurrencyCardComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CurrencyCardComponent]
+      declarations: [CurrencyCardComponent],
     });
     fixture = TestBed.createComponent(CurrencyCardComponent);
     component = fixture.componentInstance;
@@ -29,11 +29,17 @@ describe('CurrencyCardComponent', () => {
   });
 
   it('should display currency symbol', () => {
-    const currency: Currency = { symbol: 'BTCUSDT', priceChangePercent: '1.5', price: '50000' };
+    const currency: Currency = {
+      symbol: 'BTCUSDT',
+      priceChangePercent: '1.5',
+      price: '50000',
+    };
     component.currency = currency;
     fixture.detectChanges();
-    
-    const symbolElement = fixture.debugElement.query(By.css('.currency-symbol'));
+
+    const symbolElement = fixture.debugElement.query(
+      By.css('.currency-symbol'),
+    );
     expect(symbolElement.nativeElement.textContent).toContain(currency.symbol);
   });
 
