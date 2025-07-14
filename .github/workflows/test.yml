@@ -3,9 +3,9 @@ on:
   push:
     branches:
     - main
-  permissions:
-    contents: read
-    issues: write
+permissions:
+  contents: read
+  issues: write
 jobs:
   Run-Test:
     runs-on: ubuntu-latest
