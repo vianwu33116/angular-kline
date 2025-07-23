@@ -10,12 +10,14 @@ describe('NotFoundComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [NotFoundComponent, MainComponent],
-        imports: [RouterModule.forRoot([
-            { path: '', component: MainComponent },
-            { path: '**', component: NotFoundComponent }
-        ])]
+      imports: [
+        RouterModule.forRoot([
+          { path: '', component: MainComponent },
+          { path: '**', component: NotFoundComponent },
+        ]),
+      ],
     });
-    
+
     fixture = TestBed.createComponent(NotFoundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
