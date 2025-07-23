@@ -72,6 +72,7 @@
     ]
   },
   "overrides": {
-    "esbuild": "^0.25.0"
+    "esbuild": "^0.25.0",
+    "on-headers": "^1.1.0"
   }
 }
